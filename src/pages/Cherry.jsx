@@ -1,14 +1,13 @@
 import { useState } from "react";
-import "./App.css";
-import { useCountStore } from "./store/useCountStore";
+import { useCountStore } from "../store/useCountStore";
 
-function App() {
+export default function Cherry() {
   const { count, inc, dec } = useCountStore();
   const [num, setNum] = useState(1000);
 
   return (
     <>
-      <h2>App</h2>
+      <h2>Cherry</h2>
       <div>
         <button type="button" onClick={inc}>
           +
@@ -41,5 +40,3 @@ function App() {
     </>
   );
 }
-
-export default App;
