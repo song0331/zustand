@@ -1,10 +1,19 @@
 import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
-export const useCountStore = create((set) => ({
-  count: 10,
-  inc: () => set((store) => ({ count: store.count + 1 })),
-  dec: () => set((store) => ({ count: store.count - 1 })),
-}));
+export const useCountStore = create(
+  devtools((set, get) => ({
+    count: 10,
+    str: "init",
+    action: () => {
+      const test = get().count + 100;
+      return test;
+    },
+    inc: () => set((store) => ({ count: store.count + 1 })),
+    dec: () => set((store) => ({ count: store.count - 1 })),
+    update: (data) => set(() => ({ str: data })),
+  }))
+);
 
 // 일반함수 버젼
 // export const useCountStore = create(function (set) {

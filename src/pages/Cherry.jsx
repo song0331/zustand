@@ -1,12 +1,29 @@
 import { useState } from "react";
 import { useCountStore } from "../store/useCountStore";
+import usePersist from "../store/usePersist";
+import { useRef } from "react";
 
 export default function Cherry() {
-  const { count, inc, dec } = useCountStore();
+  const { number, plus, minus } = usePersist();
+  const { count, inc, dec, update, str } = useCountStore();
   const [num, setNum] = useState(1000);
+  const inputRef = useRef(null);
+
+  const handleUpdate = () => {
+    console.log(inputRef.current.value);
+    update(inputRef.current.value);
+  };
 
   return (
     <>
+      <h1>Persist 미들웨어: {number}</h1>
+      <button onClick={plus}>Increment</button>
+      <button onClick={minus}>Decrement</button>
+      <div>{str}</div>
+      <input ref={inputRef} type="text" name="data" id="data" />
+      <button onClick={handleUpdate} type="button">
+        변경
+      </button>
       <h2>Cherry</h2>
       <div>
         <button type="button" onClick={inc}>

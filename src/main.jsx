@@ -31,22 +31,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "/",
-  //   element: <App />,
-  // },
-  // {
-  //   path: "/apple",
-  //   element: <Apple />,
-  // },
-  // {
-  //   path: "/banana",
-  //   element: <Banana />,
-  // },
-  // {
-  //   path: "/cherry",
-  //   element: <Cherry />,
-  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
